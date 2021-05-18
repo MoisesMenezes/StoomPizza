@@ -4,6 +4,7 @@
   padding: 1.5rem 1.8rem;
   max-width: 700px;
   margin-top: -2.5rem;
+  position: relative;
 
   margin-left: 50px;
 
@@ -11,6 +12,50 @@
     font-size: 2.2rem;
     margin-bottom: 1rem;
     color: var(--gray-900);
+  }
+
+  .containerStar {
+    position: absolute;
+    right: -0.5rem;
+    top: -3rem;
+
+    .star {
+      position: relative;
+
+      p {
+        font-size: 1.2rem;
+        transform: translate(50%, 30%);
+        width: 50px;
+        text-align: center;
+        z-index: 9999;
+        color: var(--white);
+        position: absolute;
+
+        strong {
+          font-size: 2rem;
+        }
+      }
+
+      &,
+      &::before,
+      &::after {
+        content: "";
+        border-radius: 0.5rem;
+        width: 100px;
+        height: 100px;
+        background: var(--blue-400);
+      }
+
+      &::before {
+        position: absolute;
+        transform: rotate(30deg);
+      }
+
+      &::after {
+        position: absolute;
+        transform: rotate(-30deg);
+      }
+    }
   }
 }
 

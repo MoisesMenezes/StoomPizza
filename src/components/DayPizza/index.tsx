@@ -1,9 +1,16 @@
 import styles from "./styles.module.scss";
-import {BiCheck} from "react-icons/bi";
+import { BiCheck } from "react-icons/bi";
 
 export function DayPizza() {
   return (
     <div className={styles.modal}>
+      <div className={styles.containerStar}>
+        <div className={styles.star}>
+          <p>
+            <strong>50</strong> pontos
+          </p>
+        </div>
+      </div>
       <h3>Pizza do dia:</h3>
 
       <div className={styles.containerPizza}>
@@ -21,7 +28,10 @@ export function DayPizza() {
           <div className={styles.pricePizza}>
             <p>R$ 37,00</p>
 
-            <button>quero!<BiCheck  color="#fff" size={30}  /></button>
+            <button>
+              quero!
+              <BiCheck color="#fff" size={30} />
+            </button>
           </div>
         </div>
       </div>

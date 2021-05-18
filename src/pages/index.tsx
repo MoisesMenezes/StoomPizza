@@ -2,8 +2,12 @@ import Head from 'next/head'
 import {Header} from "../components/Header";
 import { DayPizza} from "../components/DayPizza";
 import { ModalDough } from "../components/ModalDough";
+import { GetStaticProps } from 'next';
+import { api } from '../services/api';
 
-export default function Home() {
+export default function Home({igredients}) {
+
+  console.log("HELLO MAIN", igredients)
   return (
     <div>
       <Head>
@@ -11,7 +15,21 @@ export default function Home() {
       </Head>
       <Header />
       {/* <DayPizza /> */}
-      <ModalDough />
+      <ModalDough ingredients={igredients} />
     </div>
   )
 }
+
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+
+  const { data } = await api.get("/ingredients");
+
+  
+  const igredients =  data;
+
+  return {
+    props: { igredients },
+    revalidate: 60 * 60 * 24, // 24 hours
+  };
+};
