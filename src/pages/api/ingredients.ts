@@ -36,7 +36,7 @@ export default (request: NextApiRequest, response: NextApiResponse) => {
         price: 15,
         img: "https://www.santapizzadelivery.com.br/img/pizza-tres.png",
         description:
-          "Essa pizza... meu amigo você tem que ter coragem pra pedir, dizem que ela é o almoço e janta de pelo menos 7 dias.",
+          "Pizza com 12 pedaços para quando chegar visita e sobrar ainda pro café da manhã.",
       },
       {
         id: 2,
@@ -44,7 +44,7 @@ export default (request: NextApiRequest, response: NextApiResponse) => {
         price: 12,
         img: "https://www.santapizzadelivery.com.br/img/pizza-dois.png",
         description:
-          "Um tamanho razoável para uma família grande, serve até 8 pessoas tranquilamente.",
+          "Pizza com 8 pedaços ideal para uma família.",
       },
       {
         id: 3,
@@ -52,30 +52,33 @@ export default (request: NextApiRequest, response: NextApiResponse) => {
         title: "Pequena",
         img: "https://www.santapizzadelivery.com.br/img/pizza-um.png",
         description:
-          "Um tamanho para poucas pessoas, se você pretende dividir com até 3 pessoas, esse é o tamanho ideal.",
+          "Pizza com 6 pedaços ideal para poucas pessoas.",
       },
     ],
     recheios: [
       {
         id: 1,
         title: "Frango & Catupiry",
-        img: "https://cdnv2.moovin.com.br/bpnutrition/imagens/produtos/det/pizza-de-frango-com-catupiry-500g-mama-gusto-imagem-ilustrativa-95263b8065962b619fb577e286e192cc.jpg",
+        price: 8,
+        img: "http://www.pizzacesar.com.br/class/resize.php?arquivo=../uploads/1010201212234587813019.jpg&largura=1134&altura=449&tipo=crop",
         description:
-          "Frango desfiado com catupiry, queijo mussarela, orégano e salsinha",
+          "Molho de tomate, Muçarela, Frango, Catupiry",
       },
       {
         id: 2,
         title: "Calabresa",
-        img: "https://blog.novasafra.com.br/wp-content/uploads/2016/01/accb7d_37d37d9f1001e88384dafc6e5cc60c4f.jpg_1024-780x450.jpg",
+        price: 10,
+        img: "http://www.pizzacesar.com.br/class/resize.php?arquivo=../uploads/1110201205137297594650.jpg&largura=1134&altura=449&tipo=crop",
         description:
-          "calabresa mussarela",
+          "Molho de tomate, Muçarela, Calabresa",
       },
       {
         id: 3,
-        title: "Brócolis",
-        img: "https://media-cdn.tripadvisor.com/media/photo-s/08/72/27/5c/babbo-giovanni-curitiba.jpg",
+        title: "Escarola",
+        price: 7,
+        img: "http://www.pizzacesar.com.br/class/resize.php?arquivo=../uploads/1110201204543598968966.jpg&largura=1134&altura=449&tipo=crop",
         description:
-          "Brócolis, queijo e salsinha",
+          "Molho de tomate, Muçarela Escarola Refogada, Azeitonas",
       },
     ],
   };

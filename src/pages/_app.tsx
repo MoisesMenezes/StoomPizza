@@ -4,7 +4,7 @@ import "../styles/global.scss";
 function MyApp({ Component, pageProps }) {
   return (
     <PizzaContextProvider>
-      <Component {...pageProps} />)
+      <Component {...pageProps} />
     </PizzaContextProvider>
   );
 }
