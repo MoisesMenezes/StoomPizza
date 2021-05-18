@@ -1,8 +1,11 @@
 import { Header } from "../../components/Header";
 import { StepProgress } from "../../components/StepProgress";
 import styles from "./finishpizza.module.scss";
+import { usePizza } from "../../context/PizzaContext";
 
 export default function FinishPizza() {
+  const { pizza, total } = usePizza();
+
   return (
     <>
       <Header />

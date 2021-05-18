@@ -4,6 +4,8 @@ import { BiCheck } from "react-icons/bi";
 import { GetStaticProps } from "next";
 import { api } from "../../services/api";
 import { StepProgress } from "../../components/StepProgress";
+import { useRouter } from "next/dist/client/router";
+import { usePizza } from "../../context/PizzaContext";
 
 interface sizeProps {
   id: number;
@@ -18,6 +20,15 @@ interface sizePizzaProps {
 }
 
 export default function sizePizza({ sizes }: sizePizzaProps) {
+  const router = useRouter();
+  const {setTamanho,pizza, total, sumTotal  } = usePizza();
+
+  const addPizzaSize  = (size: string, price: number ) => {
+
+    sumTotal(price);
+    setTamanho(size); 
+    router.push("/build-pizza/fillingPizza")
+  }
 
   return (
     <>
@@ -38,7 +49,7 @@ export default function sizePizza({ sizes }: sizePizzaProps) {
                     <p>{size.description}</p>
                     <div className={styles.price}>
                       <strong>R${size.price}</strong>
-                      <button>
+                      <button onClick={() => addPizzaSize(size.title, size.price)}>
                         Escolher <BiCheck size={30} />
                       </button>
                     </div>

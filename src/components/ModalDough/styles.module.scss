@@ -37,22 +37,6 @@
     grid-template-columns: repeat(1fr);
     gap: 1.5rem;
   }
-
-  button {
-    display: flex;
-    gap: 10px;
-    font-size: 1.2rem;
-    color: var(--white);
-    padding: 0.8rem 1rem;
-    border: 0;
-    border-radius: 10px;
-    background-color: var(--green-500);
-    margin-top: 1.5rem;
-
-    svg {
-      align-self: center;
-    }
-  }
 }
 
 .listDough {
@@ -104,11 +88,31 @@
       color: var(--gray-780);
     }
 
-    strong {
-      margin-bottom: 0.8rem;
-      display: block;
-      font-size: 2rem;
-      color: var(--green-500);
+    .price {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 0.5rem;
+      strong {
+        display: block;
+        font-size: 2rem;
+        color: var(--green-500);
+      }
+
+      button {
+        display: flex;
+        gap: 8px;
+        font-size: 1rem;
+        color: var(--white);
+        padding: 0.8rem 1rem;
+        border: 0;
+        border-radius: 10px;
+        background-color: var(--green-500);
+
+        svg {
+          align-self: center;
+        }
+      }
     }
   }
 }

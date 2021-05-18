@@ -10,7 +10,6 @@ import { usePizza } from "../context/PizzaContext";
 export default function Home({ igredients,dayPizza }) {
   const teste = usePizza();
 
-  console.log("DAY PIZZA", dayPizza)
   return (
     <>
       <Head>
@@ -19,7 +18,7 @@ export default function Home({ igredients,dayPizza }) {
 
       <Header />
       <div className={styles.homepage}>
-        <DayPizza pizza={dayPizza} />
+        <DayPizza dayPizza={dayPizza} />
         <ModalDough ingredients={igredients} />
       </div>
     </>
@@ -30,13 +29,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data } = await api.get("/ingredients");
   const response = await api.get("/pizzas");
 
-  console.log("PIZZAS", response.data[1]);
-
   const randomNumber = Math.floor(Math.random() * 3);
   const randomPizza = response.data[randomNumber];
-  
-  
-  console.log("DAY PIZZA SRC", randomPizza);
 
   return {
     props: { igredients: data, dayPizza: randomPizza },

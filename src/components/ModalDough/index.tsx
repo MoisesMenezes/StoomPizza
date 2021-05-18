@@ -1,5 +1,7 @@
 import styles from "./styles.module.scss";
 import { ImPlay3 } from "react-icons/im";
+import { useRouter } from "next/dist/client/router";
+import { usePizza } from "../../context/PizzaContext";
 
 interface Massas {
   id: number;
@@ -16,45 +18,46 @@ interface ModalDoughProps {
 }
 
 export function ModalDough({ ingredients: { massas } }: ModalDoughProps) {
+  const { setMassa,sumTotal, total} = usePizza();
+  const router = useRouter();
 
-  console.log("AAA", massas)
+  const addDough = (dough: string,price: number) => {
+    sumTotal(price);
+    setMassa(dough);
+
+    router.push("/build-pizza/sizePizza");
+  }
+
+
   return (
     <div className={styles.container}>
       <h1>Ou monte sua pizza</h1>
       <div className={styles.steps}>
         <p>Selecione sua massa</p>
-        <strong>0 / 3</strong>
+        <strong>1 / 4</strong>
       </div>
       <ul>
         {massas.map((massa) => (
           <li key={massa.id}>
             <div className={styles.modalDough}>
-              <img
-                src={massa.img}
-                alt=""
-              />
+              <img src={massa.img} alt="" />
               <div className={styles.descriptionDough}>
                 <div className={styles.checked}>
-                  <h2>{massa.title}</h2>
-                  <input
-                    type="radio"
-                    id="nova-iorquina"
-                    name="dough"
-                    value="nova-iorquina"
-                  />
+                  <h2>Massa {massa.title}</h2>
                 </div>
                 <p>{massa.description}</p>
-                <strong>R$ {massa.price}</strong>
+                <div className={styles.price}>
+                  <strong>R$ {massa.price}</strong>
+                  <button onClick={() => addDough(massa.title, massa.price)}>
+                    montar meu pedido
+                    <ImPlay3 />
+                  </button>
+                </div>
               </div>
             </div>
           </li>
         ))}
       </ul>
-
-      <button>
-        montar meu pedido
-        <ImPlay3 />
-      </button>
     </div>
   );
 }
