@@ -4,8 +4,13 @@
   padding: 1.5rem;
 }
 
+.logo {
+  display: flex;
+}
+
 .headerContent {
   display: flex;
+  justify-content: space-between;
 
   img {
     width: 5rem;
@@ -17,8 +22,23 @@
     font-size: 3rem;
   }
 
-  strong {
+  h3 {
     font-size: 1.5rem;
     color: var(--orange-500);
+  }
+}
+
+.points {
+  display: flex;
+  word-wrap: break-word;
+
+  p {
+    font-size: 1.2rem;
+    text-align: end;
+    color: var(--orange-500);
+  }
+
+  strong {
+    color: var(--white);
   }
 }

@@ -2,9 +2,16 @@ import { Header } from "../../components/Header";
 import { StepProgress } from "../../components/StepProgress";
 import styles from "./finishpizza.module.scss";
 import { usePizza } from "../../context/PizzaContext";
+import { useRouter } from "next/dist/client/router";
 
 export default function FinishPizza() {
-  const { pizza, total } = usePizza();
+  const { pizza, total,points,sumPoints } = usePizza();
+  const router = useRouter();
+
+  const finishOrder = () => {
+    sumPoints(pizza.points);
+    router.push("/");
+  }
 
   return (
     <>
@@ -25,7 +32,7 @@ export default function FinishPizza() {
               <p>Mussarela</p>
               <h3>Total</h3>
               <strong>R$30,00</strong>
-              <button> Finalizar Pedido</button>
+              <button onClick={finishOrder}> Finalizar Pedido</button>
             </div>
           </div>
         </div>
