@@ -7,10 +7,10 @@ import { api } from "../services/api";
 import styles from "./home.module.scss";
 import { usePizza } from "../context/PizzaContext";
 
-export default function Home({ igredients }) {
+export default function Home({ igredients,dayPizza }) {
   const teste = usePizza();
-  console.log("LOLO", teste);
 
+  console.log("DAY PIZZA", dayPizza)
   return (
     <>
       <Head>
@@ -19,7 +19,7 @@ export default function Home({ igredients }) {
 
       <Header />
       <div className={styles.homepage}>
-        <DayPizza />
+        <DayPizza pizza={dayPizza} />
         <ModalDough ingredients={igredients} />
       </div>
     </>
@@ -28,11 +28,18 @@ export default function Home({ igredients }) {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data } = await api.get("/ingredients");
+  const response = await api.get("/pizzas");
 
-  const igredients = data;
+  console.log("PIZZAS", response.data[1]);
+
+  const randomNumber = Math.floor(Math.random() * 3);
+  const randomPizza = response.data[randomNumber];
+  
+  
+  console.log("DAY PIZZA SRC", randomPizza);
 
   return {
-    props: { igredients },
+    props: { igredients: data, dayPizza: randomPizza },
     revalidate: 60 * 60 * 24, // 24 hours
   };
 };

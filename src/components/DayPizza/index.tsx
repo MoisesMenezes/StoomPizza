@@ -1,13 +1,25 @@
 import styles from "./styles.module.scss";
 import { BiCheck } from "react-icons/bi";
 
-export function DayPizza() {
+interface dayPizzaProps {
+  pizza: {
+    img: string;
+    ingredients: string;
+    dough: string;
+    points:number;
+    price: number;
+    tittle: string;
+  }
+}
+
+export function DayPizza({pizza}: dayPizzaProps) {
+
   return (
     <div className={styles.modal}>
       <div className={styles.containerStar}>
         <div className={styles.star}>
           <p>
-            <strong>50</strong> pontos
+            <strong>{pizza.points}</strong> pontos
           </p>
         </div>
       </div>
@@ -15,19 +27,19 @@ export function DayPizza() {
 
       <div className={styles.containerPizza}>
         <img
-          src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+          src={pizza.img}
           alt="pizza"
         />
 
         <div className={styles.descriptionPizza}>
-          <h3>Pizza Napolitana</h3>
+          <h3>{pizza.tittle}</h3>
           <strong>Massa</strong>
-          <p>Napolitana</p>
+          <p>{pizza.dough}</p>
           <strong>Ingredientes</strong>
-          <p>mussarela, peito de peru, palmito, parmesão, orégano.</p>
+          <p>{pizza.ingredients}</p>
           <div className={styles.pricePizza}>
-            <p>R$ 37,00</p>
-
+            <p>R$ {pizza.price}</p>
+          
             <button>
               quero!
               <BiCheck color="#fff" size={30} />
