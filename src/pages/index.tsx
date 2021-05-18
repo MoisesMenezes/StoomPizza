@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import {Header} from "../components/Header";
+import { DayPizza} from "../components/DayPizza";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
         <title>Pizza Stoom</title>
       </Head>
       <Header />
-      <h1>OLA</h1>
+      <DayPizza />
     </div>
   )
 }

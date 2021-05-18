@@ -1,0 +1,76 @@
+.modal {
+  background: var(--gray-400);
+  border-radius: 1rem;
+  padding: 1.5rem 1.8rem;
+  max-width: 700px;
+  margin-top: -2.5rem;
+
+  margin-left: 50px;
+
+  h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--gray-900);
+  }
+}
+
+.containerPizza {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: 1fr 2fr;
+
+  img {
+    border-top-left-radius: 8%;
+    border-bottom-left-radius: 8%;
+    height: 100%;
+    width: 15rem;
+    object-fit: cover;
+  }
+
+  .descriptionPizza {
+    h3 {
+      color: var(--gray-800);
+    }
+
+    strong {
+      display: block;
+      margin: 0.5rem 0;
+      font-size: 1.5rem;
+      color: var(--gray-750);
+    }
+
+    p {
+      line-height: 2.5rem;
+      font-size: 1.5rem;
+      color: var(--gray-780);
+    }
+  }
+
+  .pricePizza {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    p,
+    strong {
+      font-size: 2.5rem;
+    }
+
+    p {
+      align-self: center;
+      color: var(--green-500);
+    }
+
+    button {
+      letter-spacing: 2px;
+      display: flex;
+      gap: 15px;
+      font-size: 1.8rem;
+      color: var(--white);
+      padding: 0.6rem 1rem;
+      border: 0;
+      border-radius: 10px;
+      background-color: var(--green-500);
+    }
+  }
+}
