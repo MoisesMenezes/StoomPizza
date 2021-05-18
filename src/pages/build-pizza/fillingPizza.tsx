@@ -24,7 +24,7 @@ export default function fillingPizza({filling}: fillingPizzaProps) {
     <>
       <Header />
       <div className={styles.container}>
-        <div className={styles.content}>
+        <div className={styles.contentFilling}>
           <h1>Selecione o Recheio da Pizza</h1>
           <ul>
             {filling.map((size) => (
