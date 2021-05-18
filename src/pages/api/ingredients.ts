@@ -32,22 +32,25 @@ export default (request: NextApiRequest, response: NextApiResponse) => {
     tamanhos: [
       {
         id: 1,
-        title: "Imensa",
-        img: "https://s2.glbimg.com/4y3xT-yoX11D9RqblgrnS6SaBIU=/e.glbimg.com/og/ed/f/original/2019/07/10/pizzabatepapo.jpg",
+        title: "Grande",
+        price: 15,
+        img: "https://www.santapizzadelivery.com.br/img/pizza-tres.png",
         description:
           "Essa pizza... meu amigo você tem que ter coragem pra pedir, dizem que ela é o almoço e janta de pelo menos 7 dias.",
       },
       {
         id: 2,
-        title: "Grande",
-        img: "https://media-cdn.tripadvisor.com/media/photo-s/0a/cc/84/22/pizza-de-calabresa-e.jpg",
+        title: "Normal",
+        price: 12,
+        img: "https://www.santapizzadelivery.com.br/img/pizza-dois.png",
         description:
           "Um tamanho razoável para uma família grande, serve até 8 pessoas tranquilamente.",
       },
       {
         id: 3,
-        title: "Normal",
-        img: "https://img.olx.com.br/images/86/861004009975673.jpg",
+        price: 10,
+        title: "Pequena",
+        img: "https://www.santapizzadelivery.com.br/img/pizza-um.png",
         description:
           "Um tamanho para poucas pessoas, se você pretende dividir com até 3 pessoas, esse é o tamanho ideal.",
       },

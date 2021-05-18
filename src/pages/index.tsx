@@ -4,19 +4,26 @@ import { DayPizza} from "../components/DayPizza";
 import { ModalDough } from "../components/ModalDough";
 import { GetStaticProps } from 'next';
 import { api } from '../services/api';
+import styles from "./home.module.scss";
+import {usePizza  } from "../context/PizzaContext";
 
 export default function Home({igredients}) {
 
-  console.log("HELLO MAIN", igredients)
+  const teste = usePizza();
+  console.log("LOLO",teste);
+
   return (
-    <div>
-      <Head>
+    <>
+    <Head>
         <title>Pizza Stoom</title>
       </Head>
+
       <Header />
-      {/* <DayPizza /> */}
+    <div className={styles.homepage}>
+      <DayPizza />
       <ModalDough ingredients={igredients} />
     </div>
+    </>
   )
 }
 
