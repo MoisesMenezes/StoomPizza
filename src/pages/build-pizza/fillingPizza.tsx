@@ -6,6 +6,7 @@ import { api } from "../../services/api";
 import { StepProgress } from "../../components/StepProgress";
 import { useRouter } from "next/dist/client/router";
 import { usePizza } from "../../context/PizzaContext";
+import { ConvertMoney } from "../../utils/converMoney";
 
 interface fillingProps {
   id: number;
@@ -20,15 +21,19 @@ interface fillingPizzaProps {
 }
 
 export default function fillingPizza({ filling }: fillingPizzaProps) {
-  const { pizza,setIngredients, sumTotal } = usePizza();
+  const { setIngredients, sumTotal, setImg } = usePizza();
   const router = useRouter();
 
-
-  const addFilling = async (ingredients: string, price: number) => {
-    setIngredients(ingredients)
+  const addFilling = async (
+    ingredients: string,
+    price: number,
+    img: string
+  ) => {
+    setIngredients(ingredients);
     sumTotal(price);
+    setImg(img);
 
-    router.push("/build-pizza/finishPizza")
+    router.push("/build-pizza/finishPizza");
   };
 
   return (
@@ -46,9 +51,11 @@ export default function fillingPizza({ filling }: fillingPizzaProps) {
                     <h2>{item.title}</h2>
                     <p>{item.description}</p>
                     <div className={styles.price}>
-                      <strong>R${item.price}</strong>
+                      <strong>{ConvertMoney(item.price)}</strong>
                       <button
-                        onClick={() => addFilling(item.description,item.price)}
+                        onClick={() =>
+                          addFilling(item.description, item.price, item.img)
+                        }
                       >
                         Escolher <BiCheck size={30} />
                       </button>

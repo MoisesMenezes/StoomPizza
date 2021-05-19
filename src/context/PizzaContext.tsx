@@ -12,6 +12,7 @@ interface pizzaContexData {
   pizza: pizzaProps;
   total: number;
   points: number;
+  imgPizza: string;
   setMassa: (massa: string) => void;
   setTamanho: (size: string) => void;
   setIngredients: (ingredients: string) => void;
@@ -20,6 +21,7 @@ interface pizzaContexData {
   setPrice: (price: number) => void;
   sumTotal: (value: number) => void;
   sumPoints: (value: number) => void;
+  clearProperties: () => void;
 }
 
 interface PizzaContextProps {
@@ -32,20 +34,17 @@ export const usePizza = () => {
   return useContext(PizzaContext);
 };
 
-
-
 export function PizzaContextProvider({ children }: PizzaContextProps) {
   const [pizza, setPizza] = useState<pizzaProps>() 
   const [total, setTotal] = useState(0);
-
   const [points, setPoints] = useState<number>(0);
+  const [imgPizza, setImgPizza] = useState("");
 
 
   useEffect(() => {
     const points = localStorage.getItem("@points")
     setPoints(Number(points));
   },[])
-
 
   function sumPoints(value: number){
     const sum = value + points;
@@ -73,7 +72,7 @@ export function PizzaContextProvider({ children }: PizzaContextProps) {
   }
 
   function setImg(img: string) {
-    setPizza({ ...pizza, img });
+    setImgPizza(img);
   }
 
   function setIngredients(ingredients: string) {
@@ -81,13 +80,18 @@ export function PizzaContextProvider({ children }: PizzaContextProps) {
   }
 
   function handlePizza(item: pizzaProps) {
-    // setPrice(item.price);
     setPizza(item);
+  }
+
+  function clearProperties(){
+    setTotal(0);
+    setImgPizza("");
+    setPizza({} as pizzaProps);
   }
 
   return (
     <PizzaContext.Provider
-      value={{ pizza, setMassa, setTamanho, setImg, setIngredients, handlePizza,setPrice,sumTotal, total,sumPoints, points }}
+      value={{ pizza, setMassa, setTamanho, setImg, setIngredients, handlePizza,setPrice,sumTotal, total,sumPoints, points,imgPizza, clearProperties }}
     >
       {children}
     </PizzaContext.Provider>

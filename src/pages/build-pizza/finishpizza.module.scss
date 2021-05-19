@@ -3,6 +3,16 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-gap: 2rem;
+
+  p {
+    font-weight: bold;
+    margin-top: 0.5rem;
+
+    strong {
+      font-size: 1.2rem;
+      color: var(--green-500);
+    }
+  }
 }
 
 .content {
@@ -37,6 +47,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  max-width: 25rem;
   justify-content: space-between;
 
   h3 {

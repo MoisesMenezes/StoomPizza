@@ -5,11 +5,8 @@ import { ModalDough } from "../components/ModalDough";
 import { GetStaticProps } from "next";
 import { api } from "../services/api";
 import styles from "./home.module.scss";
-import { usePizza } from "../context/PizzaContext";
 
 export default function Home({ igredients,dayPizza }) {
-  const teste = usePizza();
-
   return (
     <>
       <Head>

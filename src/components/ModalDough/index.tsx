@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { ImPlay3 } from "react-icons/im";
 import { useRouter } from "next/dist/client/router";
 import { usePizza } from "../../context/PizzaContext";
+import { ConvertMoney } from "../../utils/converMoney";
 
 interface Massas {
   id: number;
@@ -18,7 +19,7 @@ interface ModalDoughProps {
 }
 
 export function ModalDough({ ingredients: { massas } }: ModalDoughProps) {
-  const { setMassa,sumTotal, total} = usePizza();
+  const { setMassa,sumTotal} = usePizza();
   const router = useRouter();
 
   const addDough = (dough: string,price: number) => {
@@ -27,7 +28,6 @@ export function ModalDough({ ingredients: { massas } }: ModalDoughProps) {
 
     router.push("/build-pizza/sizePizza");
   }
-
 
   return (
     <div className={styles.container}>
@@ -47,7 +47,7 @@ export function ModalDough({ ingredients: { massas } }: ModalDoughProps) {
                 </div>
                 <p>{massa.description}</p>
                 <div className={styles.price}>
-                  <strong>R$ {massa.price}</strong>
+                  <strong>{ConvertMoney(massa.price)}</strong>
                   <button onClick={() => addDough(massa.title, massa.price)}>
                     montar meu pedido
                     <ImPlay3 />

@@ -3,15 +3,21 @@ import { StepProgress } from "../../components/StepProgress";
 import styles from "./finishpizza.module.scss";
 import { usePizza } from "../../context/PizzaContext";
 import { useRouter } from "next/dist/client/router";
+import { ConvertMoney } from "../../utils/converMoney";
 
 export default function FinishPizza() {
-  const { pizza, total,points,sumPoints } = usePizza();
+  const { pizza, total, sumPoints, imgPizza, clearProperties } = usePizza();
   const router = useRouter();
 
   const finishOrder = () => {
-    sumPoints(pizza.points);
+    if (!pizza.points) {
+      sumPoints(30);
+    } else {
+      sumPoints(pizza.points);
+    }
+    clearProperties();
     router.push("/");
-  }
+  };
 
   return (
     <>
@@ -19,22 +25,23 @@ export default function FinishPizza() {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.modal}>
-            <img
-              src="https://images.unsplash.com/photo-1589187151053-5ec8818e661b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
-              alt=""
-            />
+            <img src={imgPizza} alt="pizza" />
             <div className={styles.description}>
               <h3>Massa</h3>
-              <p>Siciliana</p>
+              <p>{pizza.dough}</p>
               <h3>Tamanho</h3>
-              <p>Grande</p>
+              <p>{pizza.size}</p>
               <h3>Ingredientes</h3>
-              <p>Mussarela</p>
+              <p>{pizza.ingredients}</p>
               <h3>Total</h3>
-              <strong>R$30,00</strong>
-              <button onClick={finishOrder}> Finalizar Pedido</button>
+              <strong>{ConvertMoney(total)}</strong>
+              <button onClick={finishOrder}> Finalizar Pedido.</button>
             </div>
           </div>
+          <p>
+            Você ganhara <strong>{pizza.points ? pizza.points : 30}</strong>{" "}
+            pontos por finalizar esse pedido.
+          </p>
         </div>
         <StepProgress active={4} />
       </div>

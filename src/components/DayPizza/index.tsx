@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { BiCheck } from "react-icons/bi";
 import { usePizza } from "../../context/PizzaContext";
 import { useRouter } from "next/dist/client/router";
+import { ConvertMoney } from "../../utils/converMoney";
 
 interface dayPizzaProps {
   dayPizza: {
@@ -16,11 +17,12 @@ interface dayPizzaProps {
 
 export function DayPizza({ dayPizza }: dayPizzaProps) {
 
-  const {handlePizza,sumTotal} = usePizza();
+  const {handlePizza,sumTotal, setImg} = usePizza();
   const router = useRouter();
 
   const handleAddPizza = () => {
-    sumTotal(dayPizza.price)
+    sumTotal(dayPizza.price);
+    setImg(dayPizza.img);
     handlePizza(dayPizza);
     router.push("/build-pizza/finishPizza");
   }
@@ -46,7 +48,7 @@ export function DayPizza({ dayPizza }: dayPizzaProps) {
           <strong>Ingredientes</strong>
           <p>{dayPizza.ingredients}</p>
           <div className={styles.pricePizza}>
-            <p>R$ {dayPizza.price}</p>
+            <p>{ConvertMoney(dayPizza.price)}</p>
 
             <button onClick={handleAddPizza}>
               quero!

@@ -6,6 +6,7 @@ import { api } from "../../services/api";
 import { StepProgress } from "../../components/StepProgress";
 import { useRouter } from "next/dist/client/router";
 import { usePizza } from "../../context/PizzaContext";
+import { ConvertMoney } from "../../utils/converMoney";
 
 interface sizeProps {
   id: number;
@@ -21,14 +22,13 @@ interface sizePizzaProps {
 
 export default function sizePizza({ sizes }: sizePizzaProps) {
   const router = useRouter();
-  const {setTamanho,pizza, total, sumTotal  } = usePizza();
+  const { setTamanho, sumTotal } = usePizza();
 
-  const addPizzaSize  = (size: string, price: number ) => {
-
+  const addPizzaSize = (size: string, price: number) => {
     sumTotal(price);
-    setTamanho(size); 
-    router.push("/build-pizza/fillingPizza")
-  }
+    setTamanho(size);
+    router.push("/build-pizza/fillingPizza");
+  };
 
   return (
     <>
@@ -40,16 +40,15 @@ export default function sizePizza({ sizes }: sizePizzaProps) {
             {sizes.map((size) => (
               <li key={size.id}>
                 <div className={styles.modal}>
-                  <img
-                    src={size.img}
-                    alt={size.title}
-                  />
+                  <img src={size.img} alt={size.title} />
                   <div className={styles.description}>
                     <h2>{size.title}</h2>
                     <p>{size.description}</p>
                     <div className={styles.price}>
-                      <strong>R${size.price}</strong>
-                      <button onClick={() => addPizzaSize(size.title, size.price)}>
+                      <strong>{ConvertMoney(size.price)}</strong>
+                      <button
+                        onClick={() => addPizzaSize(size.title, size.price)}
+                      >
                         Escolher <BiCheck size={30} />
                       </button>
                     </div>
@@ -59,7 +58,7 @@ export default function sizePizza({ sizes }: sizePizzaProps) {
             ))}
           </ul>
         </div>
-          <StepProgress active={2}/>
+        <StepProgress active={2} />
       </div>
     </>
   );
