@@ -19,15 +19,15 @@ interface ModalDoughProps {
 }
 
 export function ModalDough({ ingredients: { massas } }: ModalDoughProps) {
-  const { setMassa,sumTotal} = usePizza();
+  const { setMassa, sumTotal } = usePizza();
   const router = useRouter();
 
-  const addDough = (dough: string,price: number) => {
+  const addDough = (dough: string, price: number) => {
     sumTotal(price);
     setMassa(dough);
 
     router.push("/build-pizza/sizePizza");
-  }
+  };
 
   return (
     <div className={styles.container}>

@@ -16,8 +16,7 @@ interface dayPizzaProps {
 }
 
 export function DayPizza({ dayPizza }: dayPizzaProps) {
-
-  const {handlePizza,sumTotal, setImg} = usePizza();
+  const { handlePizza, sumTotal, setImg } = usePizza();
   const router = useRouter();
 
   const handleAddPizza = () => {
@@ -25,7 +24,7 @@ export function DayPizza({ dayPizza }: dayPizzaProps) {
     setImg(dayPizza.img);
     handlePizza(dayPizza);
     router.push("/build-pizza/finishPizza");
-  }
+  };
 
   return (
     <div className={styles.modal}>

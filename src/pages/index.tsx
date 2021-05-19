@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Header } from "../components/Header";
 import { DayPizza } from "../components/DayPizza";
 import { ModalDough } from "../components/ModalDough";
 import { GetStaticProps } from "next";
@@ -10,10 +9,8 @@ export default function Home({ igredients,dayPizza }) {
   return (
     <>
       <Head>
-        <title>Pizza Stoom</title>
+        <title>Home | Pizza Stoom</title>
       </Head>
-
-      <Header />
       <div className={styles.homepage}>
         <DayPizza dayPizza={dayPizza} />
         <ModalDough ingredients={igredients} />
